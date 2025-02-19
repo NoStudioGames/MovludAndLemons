@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public float score;
     public float point;
-    private bool isGame;
+    public bool isGame;
     public bool gotTomato;
     public float countdownTimerMax;
     public float countdownTimer;
@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameOverPanel;
     public TMP_Text yourScoreText;
+
+    public Spawner spawner;
 
     void Start()
     {
@@ -39,7 +41,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 0f;
+            Destroy(spawner);
         }
     }
 

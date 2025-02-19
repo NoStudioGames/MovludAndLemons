@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour
     public float objectTimerMax;
     public GameObject[] objects;
     public float sideMax;
+    public GameManager gameManager;
     void Start()
     {
         objectTimer = objectTimerMax;
@@ -14,6 +15,10 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
+        if (!gameManager.isGame)
+        {
+            return;
+        }
         if (objectTimer > 0)
         {
             objectTimer -= Time.deltaTime;
