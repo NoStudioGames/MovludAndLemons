@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text yourScoreText;
 
     public Spawner spawner;
+    public SfxManager sfxManager;
 
     void Start()
     {
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+                sfxManager.PlaySound(2);
                 EndGame();
             }
         }
@@ -47,6 +49,8 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
+        if(countdownTimer >= 0)
+            sfxManager.PlaySound(3);
         countdownText.text = "0";
         isGame = false;
         SetGameOverPanel();

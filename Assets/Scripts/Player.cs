@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     private Vector3 offset;
     public Animator animator;
 
+    public SfxManager sfxManager;
+
     private float posX;
     void Start()
     {
@@ -28,13 +30,16 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Lemon")
         {
+            sfxManager.PlaySound(1);
             gameManager.Score();
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.tag == "Tomato")
         {
+            sfxManager.PlaySound(5);
             animator.SetTrigger("over");
             gameManager.gotTomato = true;
+            sfxManager.PlaySound(4);
             gameManager.EndGame();
             Destroy(collision.gameObject);
         }

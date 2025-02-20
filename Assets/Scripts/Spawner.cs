@@ -26,10 +26,14 @@ public class Spawner : MonoBehaviour
         else
         {
             objectTimer = objectTimerMax;
-            int objectType = Random.Range(0, objects.Length);
+            int objectType = Random.Range(0, 100);
             float pos_x = Random.Range(-sideMax, sideMax);
+            if(objectType < 80){
+                Instantiate(objects[0], new Vector3(pos_x, transform.position.y, transform.position.z), Quaternion.identity);
+            }else {
+                Instantiate(objects[1], new Vector3(pos_x, transform.position.y, transform.position.z), Quaternion.identity);
+            }
 
-            Instantiate(objects[objectType], new Vector3(pos_x, transform.position.y, transform.position.z), Quaternion.identity);
         }
     }
 }
